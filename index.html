@@ -9,7 +9,7 @@
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     overflow-x: hidden;
-    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    background: linear-gradient(to right, #ffb6c1, #ffc0cb); /* pink gradient */
     color: #fff;
     display: flex;
     justify-content: center;
@@ -37,13 +37,13 @@
     cursor: pointer;
     font-size: 16px;
   }
-  #yesBtn { background-color: #ff6f91; color: #fff; position: relative; }
-  #noBtn { background-color: #fff; color: #ff6f91; position: absolute; }
+  #yesBtn { background-color: #ff69b4; color: #fff; position: relative; }
+  #noBtn { background-color: #fff; color: #ff69b4; position: absolute; }
 
   /* First page lily border */
   #page1 {
     border: 10px solid transparent;
-    border-image: url('https://i.ibb.co/znG3T9y/lily.png') 30 round;
+    border-image: url('https://i.ibb.co/F7XhYWh/tulip.png') 30 round;
     border-radius: 20px;
     padding: 50px;
   }
@@ -60,8 +60,8 @@
     background: rgba(255,255,255,0.1);
   }
 
-  /* Floating lilies */
-  .lily {
+  /* Floating tulips */
+  .tulip {
     position: absolute;
     width: 50px;
     animation: float 15s linear infinite;
@@ -71,20 +71,123 @@
     0% { transform: translateY(100vh) rotate(0deg); }
     100% { transform: translateY(-100px) rotate(360deg); }
   }
+
+  /* Password overlay */
+  #passwordOverlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(255,192,203,0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 999;
+    color: #fff;
+    text-align: center;
+  }
+  #passwordOverlay input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 10px;
+  }
+  #passwordOverlay button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #ff69b4;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
 </style>
 </head>
 <body>
 
-<!-- Floating lilies -->
-<img src="https://i.ibb.co/znG3T9y/lily.png" class="lily" style="left:10%; animation-delay:0s;">
-<img src="https://i.ibb.co/znG3T9y/lily.png" class="lily" style="left:50%; animation-delay:5s;">
-<img src="https://i.ibb.co/znG3T9y/lily.png" class="lily" style="left:80%; animation-delay:10s;">
+<!-- Password overlay -->
+<div id="passwordOverlay">
+  <h2>Enter Password to Open</h2>
+  <input type="password" id="passwordInput" placeholder="Enter password">
+  <button onclick="checkPassword()">Open</button>
+  <p id="errorMsg" style="color:#fff;margin-top:10px;"></p>
+</div>
+
+<!-- Floating tulips -->
+<img src="https://i.ibb.co/F7XhYWh/tulip.png" class="tulip" style="left:10%; animation-delay:0s;">
+<img src="https://i.ibb.co/F7XhYWh/tulip.png" class="tulip" style="left:50%; animation-delay:5s;">
+<img src="https://i.ibb.co/F7XhYWh/tulip.png" class="tulip" style="left:80%; animation-delay:10s;">
 
 <!-- Page 1 -->
-<div id="page1" class="page active">
+<div id="page1" class="page">
   <h1>For Wella 💖</h1>
   <h2>From Kimshii</h2>
   <button onclick="nextPage()">Next</button>
+</div>
+
+<!-- Page 2 -->
+<div id="page2" class="page">
+  <h2>Are you ready to read this?</h2>
+  <button id="yesBtn" onclick="showLetter()">Yes</button>
+  <button id="noBtn">No</button>
+</div>
+
+<!-- Page 3 -->
+<div id="page3" class="page">
+  <h2>My Letter</h2>
+  <div id="letter">
+    Baii, now na human na ang klase, and we won't be able to see each other for 2 months. 
+    I just wanted to say thank you for everything you've done for me. 
+    I guess the reason why God made us friends is so we could have an encouragement buddy 
+    when life gets tough. Even though it's just simple encouragement, it has a big impact on me. 
+    I hope we can continue to cheer each other on and keep this friendship strong 💖
+  </div>
+</div>
+
+<script>
+const PASSWORD = "Wella Prajes";
+
+function checkPassword() {
+  const input = document.getElementById('passwordInput').value;
+  const overlay = document.getElementById('passwordOverlay');
+  const errorMsg = document.getElementById('errorMsg');
+  if(input === PASSWORD){
+    overlay.style.display = 'none';
+    document.getElementById('page1').classList.add('active');
+  } else {
+    errorMsg.textContent = "Wrong password! Try again 😅";
+  }
+}
+
+function nextPage() {
+  document.getElementById('page1').classList.remove('active');
+  document.getElementById('page2').classList.add('active');
+
+  const noBtn = document.getElementById('noBtn');
+  moveNoBtn();
+  noBtn.addEventListener('mouseenter', moveNoBtn);
+}
+
+function moveNoBtn() {
+  const noBtn = document.getElementById('noBtn');
+  const x = Math.random() * 80;
+  const y = Math.random() * 60;
+  noBtn.style.left = x + '%';
+  noBtn.style.top = y + '%';
+}
+
+function showLetter() {
+  document.getElementById('page2').classList.remove('active');
+  document.getElementById('page3').classList.add('active');
+  document.body.style.background = "linear-gradient(to right, #ffb6c1, #ff69b4)";
+}
+</script>
+
+</body>
+</html>
 </div>
 
 <!-- Page 2 -->
@@ -140,5 +243,5 @@ function showLetter() {
 }
 </script>
 
-</body>
+</we>
   </html>
