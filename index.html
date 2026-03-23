@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Wella 💖</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .page {
+    display: none;
+    max-width: 600px;
+    width: 90%;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+  }
+  .active { display: block; }
+
+  h1, h2 { margin: 20px 0; }
+
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  #yesBtn { background-color: #ff6f91; color: #fff; position: relative; }
+  #noBtn { background-color: #fff; color: #ff6f91; position: absolute; }
+
+  /* First page lily border */
+  #page1 {
+    border: 10px solid transparent;
+    border-image: url('https://i.ibb.co/znG3T9y/lily.png') 30 round;
+    border-radius: 20px;
+    padding: 50px;
+  }
+
+  /* Third page scrollable letter */
+  #letter {
+    max-height: 300px;
+    overflow-y: auto;
+    line-height: 1.6;
+    font-size: 18px;
+    text-align: justify;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* Floating lilies */
+  .lily {
+    position: absolute;
+    width: 50px;
+    animation: float 15s linear infinite;
+    opacity: 0.7;
+  }
+  @keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating lilies -->
+<img src="https://i.ibb.co/znG3T9y/lily.png" class="lily" style="left:10%; animation-delay:0s;">
+<img src="https://i.ibb.co/znG3T9y/lily.png" class="lily" style="left:50%; animation-delay:5s;">
+<img src="https://i.ibb.co/znG3T9y/lily.png" class="lily" style="left:80%; animation-delay:10s;">
+
+<!-- Page 1 -->
+<div id="page1" class="page active">
+  <h1>For Wella 💖</h1>
+  <h2>From Kimshii</h2>
+  <button onclick="nextPage()">Next</button>
+</div>
+
+<!-- Page 2 -->
+<div id="page2" class="page">
+  <h2>Are you ready to read this?</h2>
+  <button id="yesBtn" onclick="showLetter()">Yes</button>
+  <button id="noBtn">No</button>
+</div>
+
+<!-- Page 3 -->
+<div id="page3" class="page">
+  <h2>My Letter</h2>
+  <div id="letter">
+    Baii, now na human na ang klase, and we won't be able to see each other for 2 months. I just wanted to say thank you for everything you've done for me. I guess the reason why God made us friends is so we could have an encouragement buddy when life gets tough. Even though it's just simple encouragement, it has a big impact on me, and I wanted you to know that I'm very happy that we've met. I hope sa G-12 we will still be friends.
+
+And baii, diba ning ana ka sauna nga dli nako iingon kung unsa akong na feel because maulaw ka? Soooo, karon pwede na ba? Yess, I like you very, very much. It started as a joke, but who would've thought it'll be real HAHAHHA. Mary Jane knows about it, and honestly, she just laughed at my face. I still remember that day, December 25, 2 am in the morning. I took all the courage I had and got myself ready to confess, but you said something that broke my confidence. That's why when you asked me if I like you, I said "Secret" because I'm not sure what would be my reaction if you'll reject me. But yeah, it's in the past, and now I wanted to let these things out. I want to say those words I can't tell you in person. I always knew I don't have karapatan, you know HAHAHHA, but it hurts when we talk about your ex or someone HAHAHAH. It's weird because I'm jealous. Weird, right?
+
+But yeah, I respect your decision when you say "Let's be friends, dae" and it's a valid reason. You know you don't need to explain everything, but I appreciate what you did. Maybe I will admire you until my feelings fade. I'm not a showy type of person, but I can proudly say you're my crush. Our classmates knew that I like you.
+
+I hope you'll find a man who will love and cherish you, a man who will do anything for you, the one who will draw a smile on your pretty face and care for you. Sometimes I kinda wish to be that man, but we knew that's impossible. That is why I am here, sending my best wishes for you. I know these words aren't enough to say everything to you. There's more I wanted to tell you, like sometimes I'm fighting with myself and making a hard decision if mo chat ba kos imoha, or dli nalang kay basin busy ka, everytime naay mag message 
+ mag dali² jud dayun kog open sa messenger kay basin ikw to, pag mag my day ko always nako Gina check if na view naba nimo, and tanan parinig sa notes nako baii, para sb tos imo HAHAHAH dibaaa, like ngano mani? And also, tung time na grabe nimo ka cold, I broke into pieces charr HAHAHHA promise baii, mura jud kog gibulagan ato na time, as in grabe jud nako ka sad. Then kadto pajud na time kay naay summative pagka ugma, then akong cousin kay nag problema na kay wla pako nag study kay nag emot² pamn HAHAHHAHA, ka isog nako karon oii, I don't know what is your reaction after this, ikw na bahala. 
+
+Sooo, karon murag tama na siguro na baii nohh, taas namn kaayu HAHAHAHHA. This is the last time I'll say this, "Thank you for being a big part of my senior high school babeeeeee🥹"
+  </div>
+</div>
+
+<!-- Music -->
+<audio id="music" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" autoplay loop></audio>
+
+<script>
+function nextPage() {
+  document.getElementById('page1').classList.remove('active');
+  document.getElementById('page2').classList.add('active');
+
+  // Position No button randomly for fun
+  const noBtn = document.getElementById('noBtn');
+  moveNoBtn();
+  noBtn.addEventListener('mouseenter', moveNoBtn);
+}
+
+function moveNoBtn() {
+  const noBtn = document.getElementById('noBtn');
+  const x = Math.random() * 80; // left %
+  const y = Math.random() * 60; // top %
+  noBtn.style.left = x + '%';
+  noBtn.style.top = y + '%';
+}
+
+function showLetter() {
+  document.getElementById('page2').classList.remove('active');
+  document.getElementById('page3').classList.add('active');
+  document.body.style.background = "linear-gradient(to right, #a1c4fd, #c2e9fb)";
+}
+</script>
+
+</body>
+  </html>
