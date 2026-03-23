@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+    
+    <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -43,7 +44,7 @@
   /* First page lily border */
   #page1 {
     border: 10px solid transparent;
-    border-image: url('https://i.ibb.co/F7XhYWh/tulip.png') 30 round;
+    border-image: url('https://i.ibb.co/znG3T9y/lily.png') 30 round;
     border-radius: 20px;
     padding: 50px;
   }
@@ -58,18 +59,8 @@
     padding: 20px;
     border-radius: 15px;
     background: rgba(255,255,255,0.1);
-  }
-
-  /* Floating tulips */
-  .tulip {
-    position: absolute;
-    width: 50px;
-    animation: float 15s linear infinite;
-    opacity: 0.7;
-  }
-  @keyframes float {
-    0% { transform: translateY(100vh) rotate(0deg); }
-    100% { transform: translateY(-100px) rotate(360deg); }
+    scroll-behavior: smooth;
+    position: relative;
   }
 
   /* Password overlay */
@@ -115,11 +106,6 @@
   <button onclick="checkPassword()">Open</button>
   <p id="errorMsg" style="color:#fff;margin-top:10px;"></p>
 </div>
-
-<!-- Floating tulips -->
-<img src="https://i.ibb.co/F7XhYWh/tulip.png" class="tulip" style="left:10%; animation-delay:0s;">
-<img src="https://i.ibb.co/F7XhYWh/tulip.png" class="tulip" style="left:50%; animation-delay:5s;">
-<img src="https://i.ibb.co/F7XhYWh/tulip.png" class="tulip" style="left:80%; animation-delay:10s;">
 
 <!-- Page 1 -->
 <div id="page1" class="page">
@@ -188,11 +174,22 @@ function showLetter() {
   document.getElementById('page2').classList.remove('active');
   document.getElementById('page3').classList.add('active');
   document.body.style.background = "linear-gradient(to right, #ffb6c1, #ff69b4)";
+  autoScrollLetter();
+}
+
+// Auto-scroll function
+function autoScrollLetter() {
+  const letter = document.getElementById('letter');
+  let scrollPos = 0;
+  const scrollHeight = letter.scrollHeight - letter.clientHeight;
+  setInterval(() => {
+    if(scrollPos < scrollHeight){
+      scrollPos += 0.3; // speed of auto-scroll
+      letter.scrollTop = scrollPos;
+    }
+  }, 50);
 }
 </script>
 
 </body>
-</html>
-
-
-
+  </html>
